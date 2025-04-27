@@ -26,6 +26,7 @@ import { Toaster } from "sonner";
 import { createPass, query } from "./utils";
 
 import TakeOfferDialog from "@/components/dialogs/take-offer-dialog";
+import AccountTokens from "./pages/account-tokes";
 
 const App: React.FC = () => {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
@@ -136,10 +137,11 @@ const App: React.FC = () => {
           Password: {createPass(walletAddress)}
         </h2>
         <Tabs defaultValue="orders" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="orders">All Offers</TabsTrigger>
             <TabsTrigger value="openOffers">Open Offers</TabsTrigger>
             <TabsTrigger value="accountOffers">Account Offers</TabsTrigger>
+            <TabsTrigger value="accountTokens">Account Tokens</TabsTrigger>
           </TabsList>
 
           <TabsContent value="orders">
@@ -169,6 +171,10 @@ const App: React.FC = () => {
               setIsWalletConnected={setIsWalletConnected}
               loading={loading}
             />
+          </TabsContent>
+
+          <TabsContent value="accountTokens">
+            <AccountTokens />
           </TabsContent>
 
           <TakeOfferDialog
